@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="HCI_2024.Views.Dialogs.ShowingPickerDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HCI_2024.Views.Dialogs"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource PrimaryBrush}">
+    <StackPanel Margin="20">
+        <!--Message-->
+        <TextBlock Text="{Binding Source={StaticResource Loc}, Path=[SelectShowing]}"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,20,0,20"
+                   Foreground="{DynamicResource TextBrush}"/>
+        <!--Date picker-->
+        <DatePicker Width="200"
+                    x:Name="DateInput"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 10"
+                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+                    Foreground="{DynamicResource SecondaryBrush}"
+                    Background="{DynamicResource BackgroundBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    materialDesign:HintAssist.Hint="{Binding Source={StaticResource Loc}, Path=[Date]}"/>
+        <!--Showing-->
+        <ComboBox Width="200"
+                  x:Name="ShowingInput"
+                  HorizontalAlignment="Center"
+                  Margin="0 0 0 20"
+                  ItemsSource="{Binding Showings}"
+                  SelectedItem="{Binding SelectedShowing, Mode=TwoWay}"
+                  DisplayMemberPath="DisplayText"
+                  Foreground="{DynamicResource TextBrush}"
+                  Background="{DynamicResource BackgroundBrush}"
+                  BorderBrush="{DynamicResource BorderBrush}"
+                  materialDesign:HintAssist.Hint="{Binding Source={StaticResource Loc}, Path=[Showing]}"/>
+        <!--Buttons-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="{Binding Source={StaticResource Loc}, Path=[Confirm]}"
+                    Command="{Binding ConfirmCommand}"
+                    Width="100"
+                    Margin="10,0"
+                    Foreground="{DynamicResource PrimaryBrush}"
+                    Background="{DynamicResource SecondaryBrush}"/>
+            <Button Content="{Binding Source={StaticResource Loc}, Path=[Cancel]}"
+                    Command="{Binding CancelCommand}"
+                    Width="100"
+                    Margin="10,0"
+                    Foreground="{DynamicResource PrimaryBrush}"
+                    Background="{DynamicResource SecondaryBrush}"/>
+        </StackPanel>
+        <!--Snackbar-->
+        <materialDesign:Snackbar Margin="0,20,0,0"
+                                 MessageQueue="{Binding SnackbarMessageQueue}"
+                                 HorizontalAlignment="Center"
+                                 Foreground="{DynamicResource PrimaryBrush}"
+                                 Background="{DynamicResource SecondaryBrush}"/>
+    </StackPanel>
+</UserControl>

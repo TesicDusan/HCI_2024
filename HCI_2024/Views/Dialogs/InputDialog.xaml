@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="HCI_2024.Views.Dialogs.InputDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HCI_2024.Views.Dialogs"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource PrimaryBrush}">
+    <StackPanel Margin="20">
+        <!--Message-->
+        <TextBlock Text="{Binding Message}"
+                   FontSize="16"
+                   Margin="0 20 0 20"
+                   HorizontalAlignment="Center"
+                   Foreground="{DynamicResource TextBrush}"/>
+        <!--User input-->
+        <PasswordBox Width="200"
+                     x:Name="PasswordInput"
+                     HorizontalAlignment="Center"
+                     MaxLength="4"
+                     Margin="0 0 0 20"
+                     materialDesign:PasswordBoxAssist.Password="{Binding InputText, Mode=TwoWay}"
+                     Foreground="{DynamicResource TextBrush}"
+                     Background="{DynamicResource BackgroundBrush}"
+                     BorderBrush="{DynamicResource BorderBrush}"/>
+        <!--Buttons-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <!-- Confirm Button -->
+            <Button Content="{Binding Source={StaticResource Loc}, Path=[Confirm]}"
+                Command="{Binding ConfirmCommand}"
+                Height="40"
+                Padding="10"
+                Margin="0 0 10 0"
+                Background="{DynamicResource SecondaryBrush}"
+                Foreground="{DynamicResource PrimaryBrush}"
+                FontWeight="Bold"/>
+            <!--Cancel button-->
+            <Button Content="{Binding Source={StaticResource Loc}, Path=[Cancel]}"
+                Command="{Binding CancelCommand}"
+                Height="40"
+                Padding="10"
+                Margin="10 0 0 0"
+                Background="{DynamicResource SecondaryBrush}"
+                Foreground="{DynamicResource PrimaryBrush}"
+                FontWeight="Bold"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

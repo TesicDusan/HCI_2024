@@ -1,0 +1,159 @@
+﻿<Page x:Class="HCI_2024.Views.OptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCI_2024.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OptionsPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="10">
+
+            <!--Languague-->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Source={StaticResource Loc}, Path=[Language]}"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Margin="0 0 10 0"
+                           Foreground="{DynamicResource TextBrush}"/>
+                <ComboBox Width="40"
+                      Height="30"
+                      SelectedValuePath="Tag"
+                      SelectionChanged="LanguageSelectionChanged"
+                      Foreground="{DynamicResource TextBrush}"
+                      BorderBrush="{DynamicResource BorderBrush}">
+                    <ComboBoxItem Tag="en">
+                        <Image Source="/Resources/Images/en.png" Width="24" Height="24" ToolTip="English"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="sr">
+                        <Image Source="/Resources/Images/sr.png" Width="24" Height="24" ToolTip="Srpski"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <!--Theme-->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Source={StaticResource Loc}, Path=[Theme]}"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Margin="0 10 10 0"
+                           Foreground="{DynamicResource TextBrush}"/>
+                <ComboBox Width="100"
+                          Height="30"
+                          SelectedValuePath="Tag"
+                          SelectionChanged="ThemeSelectionChanged"
+                          Foreground="{DynamicResource TextBrush}"
+                          BorderBrush="{DynamicResource BorderBrush}">
+                    <ComboBoxItem Tag="LightTheme" Content="{Binding Source={StaticResource Loc}, Path=[Light]}" Foreground="#000000"/>
+                    <ComboBoxItem Tag="DarkTheme" Content="{Binding Source={StaticResource Loc}, Path=[Dark]}" Foreground="#000000"/>
+                </ComboBox>
+            </StackPanel>
+
+            <!--Password change-->
+            <Button Content="{Binding Source={StaticResource Loc}, Path=[ChangePassword]}"
+                    Command="{Binding ChangePasswordCommand}"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="0 20 0 0"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    Background="{DynamicResource SecondaryBrush}"
+                    Foreground="{DynamicResource PrimaryBrush}"/>
+
+            <!--Admin panel-->
+            <StackPanel Orientation="Vertical"
+                        Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                <TextBlock Text="Admin"
+                       FontWeight="Bold"
+                       Margin="0 20 0 10"
+                       Foreground="{DynamicResource TextBrush}"/>
+                <Line X1="0" Y1="0" X2="800" Y2="0"
+                  Stroke="{DynamicResource BorderBrush}"
+                  StrokeThickness="1"/>
+                <!--User buttons-->
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[AddUser]}"
+                        Command="{Binding AddUserCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Margin="0 0 10 0"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[DeleteUser]}"
+                        Command="{Binding DeleteUserCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[MakeAdmin]}"
+                        Command="{Binding MakeAdminCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Margin="10 0 0 0"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                </StackPanel>
+                <!--Movie buttons-->
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[AddMovie]}"
+                        Command="{Binding AddMovieCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Margin="0 0 10 0"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[DeleteMovie]}"
+                        Command="{Binding DeleteMovieCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                </StackPanel>
+                <!--Item buttons-->
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[AddItem]}"
+                        Command="{Binding AddItemCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Margin="0 0 10 0"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[DeleteItem]}"
+                        Command="{Binding DeleteItemCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                </StackPanel>
+                <!--Showing buttons-->
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[AddShowing]}"
+                        Command="{Binding AddShowingCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Margin="0 0 10 0"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                    <Button Content="{Binding Source={StaticResource Loc}, Path=[DeleteShowing]}"
+                        Command="{Binding DeleteShowingCommand}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="200"
+                        Background="{DynamicResource SecondaryBrush}"
+                        Foreground="{DynamicResource PrimaryBrush}"/>
+                </StackPanel>
+                <!--View receipts button-->
+                <Button Content="{Binding Source={StaticResource Loc}, Path=[ViewReceipts]}"
+                    Command="{Binding ViewReceiptsCommand}"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="0 20 0 0"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    Background="{DynamicResource SecondaryBrush}"
+                    Foreground="{DynamicResource PrimaryBrush}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
