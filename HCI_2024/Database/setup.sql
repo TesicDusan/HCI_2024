@@ -32,7 +32,7 @@ CREATE TABLE `items` (
   `PictureUrl` varchar(500) NOT NULL,
   `IsVisible` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,'Popcorn',3.00,2,'https://atlas-content-cdn.pixelsquid.com/stock-images/popcorn-bucket-zeJmWv5-600.jpg',1),(2,'Soda',2.00,1,'https://media.istockphoto.com/id/1129679604/photo/isolated-soda-cup-with-straw.jpg?s=612x612&w=0&k=20&c=SgMKnwnsqr95jellGZoPK7GietHqL2T5R7UbQ2bJWSg=',1);
+INSERT INTO `items` VALUES (1,'Popcorn',3.00,2,'https://atlas-content-cdn.pixelsquid.com/stock-images/popcorn-bucket-zeJmWv5-600.jpg',0),(2,'Soda',2.00,1,'https://media.istockphoto.com/id/1129679604/photo/isolated-soda-cup-with-straw.jpg?s=612x612&w=0&k=20&c=SgMKnwnsqr95jellGZoPK7GietHqL2T5R7UbQ2bJWSg=',0),(3,'Popcorn S',2.00,2,'https://atlas-content-cdn.pixelsquid.com/stock-images/popcorn-bucket-zeJmWv5-600.jpg',1),(4,'Popcorn M',2.50,2,'https://atlas-content-cdn.pixelsquid.com/stock-images/popcorn-bucket-zeJmWv5-600.jpg',1),(5,'Popcorn L',3.00,2,'https://atlas-content-cdn.pixelsquid.com/stock-images/popcorn-bucket-zeJmWv5-600.jpg',1),(6,'Soda S',1.50,1,'https://media.istockphoto.com/id/1129679604/photo/isolated-soda-cup-with-straw.jpg?s=612x612&w=0&k=20&c=SgMKnwnsqr95jellGZoPK7GietHqL2T5R7UbQ2bJWSg=',1),(7,'Soda M',2.00,1,'https://media.istockphoto.com/id/1129679604/photo/isolated-soda-cup-with-straw.jpg?s=612x612&w=0&k=20&c=SgMKnwnsqr95jellGZoPK7GietHqL2T5R7UbQ2bJWSg=',1),(8,'Soda L',2.50,1,'https://media.istockphoto.com/id/1129679604/photo/isolated-soda-cup-with-straw.jpg?s=612x612&w=0&k=20&c=SgMKnwnsqr95jellGZoPK7GietHqL2T5R7UbQ2bJWSg=',1),(9,'Nachos',3.50,2,'https://thumbs.dreamstime.com/b/nacho-tray-melted-cheese-black-plastic-round-yellow-nachos-dip-isolated-white-background-179343942.jpg',1),(10,'Water',1.00,1,'https://thumbs.dreamstime.com/b/bottle-water-12522351.jpg',1);
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,10 +57,8 @@ CREATE TABLE `movies` (
   `Name` varchar(255) NOT NULL,
   `PosterUrl` varchar(500) NOT NULL,
   `IsVisible` tinyint NOT NULL DEFAULT '1',
-  PRIMARY KEY (`MovieId`),
-  UNIQUE KEY `Name_UNIQUE` (`Name`),
-  UNIQUE KEY `PosterUrl_UNIQUE` (`PosterUrl`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`MovieId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +67,7 @@ CREATE TABLE `movies` (
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (1,'Inception','https://cdn11.bigcommerce.com/s-yzgoj/images/stencil/1280x1280/products/2919271/5944675/MOVEB46211__19379.1679590452.jpg',1);
+INSERT INTO `movies` VALUES (1,'Inception','https://cdn11.bigcommerce.com/s-yzgoj/images/stencil/1280x1280/products/2919271/5944675/MOVEB46211__19379.1679590452.jpg',1),(3,'Star Wars','https://wallpapercave.com/wp/wp7490475.jpg',1),(5,'Satr Wras','https://wallpapercave.com/wp/wp7490475.jpg',0);
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -96,7 +94,7 @@ CREATE TABLE `orderitems` (
   CONSTRAINT `fk_orderitems_items` FOREIGN KEY (`ItemId`) REFERENCES `items` (`Id`) ON DELETE SET NULL,
   CONSTRAINT `fk_orderitems_showings` FOREIGN KEY (`ShowingId`) REFERENCES `showings` (`ShowingID`) ON DELETE SET NULL,
   CONSTRAINT `fk_oredritems_orders` FOREIGN KEY (`OrderId`) REFERENCES `orders` (`OrderId`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +103,7 @@ CREATE TABLE `orderitems` (
 
 LOCK TABLES `orderitems` WRITE;
 /*!40000 ALTER TABLE `orderitems` DISABLE KEYS */;
-INSERT INTO `orderitems` VALUES (1,1,2,'Inception 01/09/2025 19:00:00',2,10.00,1,NULL),(2,1,0,'Soda',2,2.00,NULL,2),(3,1,1,'Popcorn',2,3.00,NULL,1),(4,2,2,'Inception 01/09/2025 19:00:00',1,10.00,1,NULL),(5,3,2,'Inception 01/09/2025 19:00:00',4,10.00,1,NULL),(6,3,0,'Soda',4,2.00,NULL,2),(7,3,1,'Popcorn',2,3.00,NULL,1),(8,4,2,'Inception 01/09/2025 19:00:00',1,10.00,1,NULL),(9,5,2,'Inception 01/09/2025 22:00:00',4,10.00,2,NULL),(10,5,0,'Soda',5,2.00,NULL,2),(11,5,1,'Popcorn',4,3.00,NULL,1);
+INSERT INTO `orderitems` VALUES (1,1,2,'Inception 01/09/2025 19:00:00',2,10.00,1,NULL),(2,1,0,'Soda',2,2.00,NULL,2),(3,1,1,'Popcorn',2,3.00,NULL,1),(4,2,2,'Inception 01/09/2025 19:00:00',1,10.00,1,NULL),(5,3,2,'Inception 01/09/2025 19:00:00',4,10.00,1,NULL),(6,3,0,'Soda',4,2.00,NULL,2),(7,3,1,'Popcorn',2,3.00,NULL,1),(8,4,2,'Inception 01/09/2025 19:00:00',1,10.00,1,NULL),(9,5,2,'Inception 01/09/2025 22:00:00',4,10.00,2,NULL),(10,5,0,'Soda',5,2.00,NULL,2),(11,5,1,'Popcorn',4,3.00,NULL,1),(12,6,2,'Inception 22/09/2025 21:30:00',2,10.00,4,NULL),(13,6,1,'Popcorn M',1,2.50,NULL,4),(14,6,1,'Popcorn L',1,3.00,NULL,5),(15,6,0,'Soda M',2,2.00,NULL,7),(16,7,2,'Star Wars 22/09/2025 19:00:00',4,10.00,3,NULL),(17,7,1,'Popcorn L',2,3.00,NULL,5),(18,7,0,'Soda S',4,1.50,NULL,6);
 /*!40000 ALTER TABLE `orderitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +121,7 @@ CREATE TABLE `orders` (
   PRIMARY KEY (`OrderId`),
   KEY `UserId_idx` (`UserId`),
   CONSTRAINT `UserId` FOREIGN KEY (`UserId`) REFERENCES `users` (`userId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,7 +130,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1001,30.00),(2,1001,10.00),(3,1001,54.00),(4,1001,10.00),(5,1000,62.00);
+INSERT INTO `orders` VALUES (1,1001,30.00),(2,1001,10.00),(3,1001,54.00),(4,1001,10.00),(5,1000,62.00),(6,1000,29.50),(7,1000,52.00);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +151,7 @@ CREATE TABLE `seatreservations` (
   KEY `SeatId_idx` (`SeatId`),
   CONSTRAINT `SeatId` FOREIGN KEY (`SeatId`) REFERENCES `seats` (`SeatId`),
   CONSTRAINT `ShowingId` FOREIGN KEY (`ShowingId`) REFERENCES `showings` (`ShowingID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +160,7 @@ CREATE TABLE `seatreservations` (
 
 LOCK TABLES `seatreservations` WRITE;
 /*!40000 ALTER TABLE `seatreservations` DISABLE KEYS */;
-INSERT INTO `seatreservations` VALUES (3,1,25),(4,1,26),(5,1,35),(10,1,37),(6,1,44),(7,1,45),(8,1,46),(9,1,47),(11,2,43),(12,2,44),(13,2,45),(14,2,46);
+INSERT INTO `seatreservations` VALUES (3,1,25),(4,1,26),(5,1,35),(10,1,37),(6,1,44),(7,1,45),(8,1,46),(9,1,47),(11,2,43),(12,2,44),(13,2,45),(14,2,46),(17,3,24),(18,3,25),(19,3,26),(20,3,27),(15,4,35),(16,4,36);
 /*!40000 ALTER TABLE `seatreservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +205,7 @@ CREATE TABLE `showings` (
   PRIMARY KEY (`ShowingID`),
   KEY `MovieId_idx` (`MovieId`),
   CONSTRAINT `MovieId` FOREIGN KEY (`MovieId`) REFERENCES `movies` (`MovieId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +214,7 @@ CREATE TABLE `showings` (
 
 LOCK TABLES `showings` WRITE;
 /*!40000 ALTER TABLE `showings` DISABLE KEYS */;
-INSERT INTO `showings` VALUES (1,1,'2025-09-11 19:00:00',10.00,1),(2,1,'2025-09-01 22:00:00',10.00,1);
+INSERT INTO `showings` VALUES (1,1,'2025-09-11 19:00:00',10.00,1),(2,1,'2025-09-01 22:00:00',10.00,1),(3,3,'2025-09-22 19:00:00',10.00,1),(4,1,'2025-09-22 21:30:00',10.00,1),(5,3,'2025-09-22 04:31:31',10.00,0),(6,3,'2025-09-23 19:00:00',10.00,1),(7,1,'2025-09-23 21:30:00',10.00,1),(8,3,'2025-09-24 19:00:00',10.00,1),(9,1,'2025-09-24 21:30:00',10.00,1),(10,3,'2025-09-25 19:00:00',10.00,1),(11,1,'2025-09-25 21:30:00',10.00,1),(12,3,'2025-09-26 19:00:00',10.00,1),(13,1,'2025-09-26 21:30:00',10.00,1),(14,3,'2025-09-27 19:00:00',10.00,1),(15,1,'2025-09-27 21:30:00',10.00,1);
 /*!40000 ALTER TABLE `showings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -245,7 +243,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1000,1111,'en','DarkTheme',1,1),(1001,1001,'en','LightTheme',0,1);
+INSERT INTO `users` VALUES (1000,1111,'en','DarkTheme',1,1),(1001,1001,'en','LightTheme',0,1),(1002,1002,'en','LightTheme',0,1),(1004,1004,'en','LightTheme',1,1),(1111,0,'en','LightTheme',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -262,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-20 23:45:42
+-- Dump completed on 2025-09-22  5:12:29

@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HCI_2024.Views.Dialogs"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="550" d:DesignWidth="800"
              Background="{DynamicResource PrimaryBrush}">
     <StackPanel Margin="20">
         <!--Message-->
@@ -32,7 +32,7 @@
                     x:Name="DateInput"
                     HorizontalAlignment="Center"
                     Margin="0 0 0 10"
-                    SelectedDate="{Binding SelectedDate, Mode=TwoWay}"
+                    SelectedDate="{Binding SelectedDateTime, Mode=TwoWay}"
                     Foreground="{DynamicResource SecondaryBrush}"
                     Background="{DynamicResource BackgroundBrush}"
                     BorderBrush="{DynamicResource BorderBrush}"
@@ -41,7 +41,7 @@
                                  x:Name="TimeInput"
                                  HorizontalAlignment="Center"
                                  Margin="0 0 0 20"
-                                 SelectedTime="{Binding SelectedTime, Mode=TwoWay}"
+                                 SelectedTime="{Binding SelectedDateTime, Mode=TwoWay}"
                                  Foreground="{DynamicResource TextBrush}"
                                  Background="{DynamicResource BackgroundBrush}"
                                  BorderBrush="{DynamicResource BorderBrush}"
@@ -79,7 +79,7 @@
         </StackPanel>
         <!--Snackbar-->
         <materialDesign:Snackbar Margin="0,20,0,0"
-                     MessageQueue="{Binding SnackbarMessageQueue}"
+                     MessageQueue="{Binding MessageQueue}"
                      HorizontalAlignment="Center"
                      Background="{DynamicResource SecondaryBrush}"
                      Foreground="{DynamicResource PrimaryBrush}"/>

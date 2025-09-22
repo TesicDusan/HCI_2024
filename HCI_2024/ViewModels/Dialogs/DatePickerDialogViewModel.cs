@@ -30,6 +30,7 @@ namespace HCI_2024.ViewModels.Dialogs
 
         public DatePickerDialogViewModel()
         {
+            SelectedDate = DateTime.Now;
             ConfirmCommand = new RelayCommand<object>(ConfirmSelection);
         }
 

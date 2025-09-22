@@ -182,7 +182,7 @@ namespace HCI_2024.Services
             using (var connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
-                string query = "SELECT Name FROM movies";
+                string query = "SELECT Name FROM movies WHERE IsVisible = 1";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
@@ -382,7 +382,7 @@ namespace HCI_2024.Services
             using (var connection = new MySqlConnection(ConnectionString))
             {
                 connection.Open();
-                string query = "UPDATE users SET isAdmin = 1 WHERE userId = @UserId";
+                string query = "UPDATE users SET admin = 1 WHERE userId = @UserId";
                 using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@UserId", userId);

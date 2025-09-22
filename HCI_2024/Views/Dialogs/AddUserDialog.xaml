@@ -22,7 +22,7 @@
                  HorizontalAlignment="Center"
                  MaxLength="4"
                  Margin="0 0 0 10"
-                 Text="{Binding Username, Mode=TwoWay}"
+                 Text="{Binding UserName, Mode=TwoWay}"
                  materialDesign:HintAssist.Hint="{Binding Source={StaticResource Loc}, Path=[UserId]}"
                  Foreground="{DynamicResource TextBrush}"
                  Background="{DynamicResource BackgroundBrush}"
@@ -60,7 +60,7 @@
         </StackPanel>
         <!--Snackbar-->
         <materialDesign:Snackbar x:Name="Snackbar"
-                                 MessageQueue="{Binding SnackbarMessageQueue}"
+                                 MessageQueue="{Binding MessageQueue}"
                                  Margin="0,20,0,0"
                                  HorizontalAlignment="Center"
                                  Background="{DynamicResource SecondaryBrush}"

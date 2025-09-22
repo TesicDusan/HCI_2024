@@ -34,7 +34,7 @@
                   ItemsSource="{Binding Showings}"
                   SelectedItem="{Binding SelectedShowing, Mode=TwoWay}"
                   DisplayMemberPath="DisplayText"
-                  Foreground="{DynamicResource TextBrush}"
+                  Foreground="{DynamicResource PrimaryBrush}"
                   Background="{DynamicResource BackgroundBrush}"
                   BorderBrush="{DynamicResource BorderBrush}"
                   materialDesign:HintAssist.Hint="{Binding Source={StaticResource Loc}, Path=[Showing]}"/>
@@ -55,7 +55,7 @@
         </StackPanel>
         <!--Snackbar-->
         <materialDesign:Snackbar Margin="0,20,0,0"
-                                 MessageQueue="{Binding SnackbarMessageQueue}"
+                                 MessageQueue="{Binding MessageQueue}"
                                  HorizontalAlignment="Center"
                                  Foreground="{DynamicResource PrimaryBrush}"
                                  Background="{DynamicResource SecondaryBrush}"/>

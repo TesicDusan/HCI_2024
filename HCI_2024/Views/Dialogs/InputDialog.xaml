@@ -46,5 +46,11 @@
                 Foreground="{DynamicResource PrimaryBrush}"
                 FontWeight="Bold"/>
         </StackPanel>
+        <!--Snackbar-->
+        <materialDesign:Snackbar Margin="0,20,0,0"
+                         MessageQueue="{Binding MessageQueue}"
+                         HorizontalAlignment="Center"
+                         Background="{DynamicResource SecondaryBrush}"
+                         Foreground="{DynamicResource PrimaryBrush}"/>
     </StackPanel>
 </UserControl>

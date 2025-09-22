@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using HCI_2024.Resources.Localization;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,9 +44,13 @@ namespace HCI_2024.ViewModels.Dialogs
         public ICommand ConfirmCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
+        public ISnackbarMessageQueue MessageQueue { get; set; }
+
         public InputDialogViewModel(string message)
         {
             Message = message;
+
+            MessageQueue = new SnackbarMessageQueue();
 
             ConfirmCommand = new RelayCommand(ConfirmInput);
             CancelCommand = new RelayCommand(CancelInput);
@@ -56,6 +61,10 @@ namespace HCI_2024.ViewModels.Dialogs
             if (!string.IsNullOrWhiteSpace(InputText) && InputText.Length == 4)
             {
                 DialogHost.CloseDialogCommand.Execute(InputText, null);
+            }
+            else
+            {
+                MessageQueue.Enqueue(Localizer.Instance["Fail"]);
             }
         }
 

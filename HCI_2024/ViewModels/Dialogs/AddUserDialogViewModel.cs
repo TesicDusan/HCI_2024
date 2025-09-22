@@ -35,7 +35,7 @@ namespace HCI_2024.ViewModels.Dialogs
 
         private void AddUser(object? obj)
         {
-            if (UserName.Length == 4 && Password.Length == 4)
+            if (UserName.Length == 4 && Password.Length == 4 && UserName.All(char.IsDigit) && Password.All(char.IsDigit))
             {
                 DialogHost.CloseDialogCommand.Execute(new ObservableCollection<string> { UserName, Password }, null);
             }

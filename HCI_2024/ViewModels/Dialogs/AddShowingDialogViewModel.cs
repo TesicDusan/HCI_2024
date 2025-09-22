@@ -17,8 +17,7 @@ namespace HCI_2024.ViewModels.Dialogs
     {
         private ObservableCollection<string> _movies;
         private string _movieTitle;
-        private DateOnly _selectedDate;
-        private TimeOnly _selectedTime;
+        private DateTime _selectedDateTime;
         private decimal _price;
 
         public ObservableCollection<string> Movies
@@ -47,28 +46,15 @@ namespace HCI_2024.ViewModels.Dialogs
             }
         }
 
-        public DateOnly SelectedDate
+        public DateTime SelectedDateTime
         {
-            get => _selectedDate;
+            get => _selectedDateTime;
             set
             {
-                if (_selectedDate != value)
+                if (_selectedDateTime != value)
                 {
-                    _selectedDate = value;
-                    OnPropertyChanged(nameof(SelectedDate));
-                }
-            }
-        }
-
-        public TimeOnly SelectedTime
-        {
-            get => _selectedTime;
-            set
-            {
-                if (_selectedTime != value)
-                {
-                    _selectedTime = value;
-                    OnPropertyChanged(nameof(SelectedTime));
+                    _selectedDateTime = value;
+                    OnPropertyChanged(nameof(SelectedDateTime));
                 }
             }
         }
@@ -95,8 +81,7 @@ namespace HCI_2024.ViewModels.Dialogs
         {
             Movies = DatabaseHelper.LoadMovies();
             MovieTitle = string.Empty;
-            SelectedDate = DateOnly.FromDateTime(DateTime.Now);
-            SelectedTime = TimeOnly.FromDateTime(DateTime.Now);
+            SelectedDateTime = DateTime.Now;
             Price = 0.0m;
 
             MessageQueue = new SnackbarMessageQueue(TimeSpan.FromSeconds(3));
@@ -109,7 +94,7 @@ namespace HCI_2024.ViewModels.Dialogs
         {
             if (!string.IsNullOrWhiteSpace(MovieTitle) && Price > 0)
             {
-                DialogHost.CloseDialogCommand.Execute(new List<object> { MovieTitle, new DateTime(SelectedDate, SelectedTime), Price }, null);
+                DialogHost.CloseDialogCommand.Execute(new List<object> { MovieTitle, SelectedDateTime, Price }, null);
             }
             else
             {

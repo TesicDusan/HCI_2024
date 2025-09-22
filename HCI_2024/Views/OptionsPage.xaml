@@ -50,6 +50,7 @@
                           BorderBrush="{DynamicResource BorderBrush}">
                     <ComboBoxItem Tag="LightTheme" Content="{Binding Source={StaticResource Loc}, Path=[Light]}" Foreground="#000000"/>
                     <ComboBoxItem Tag="DarkTheme" Content="{Binding Source={StaticResource Loc}, Path=[Dark]}" Foreground="#000000"/>
+                    <ComboBoxItem Tag="BlueTheme" Content="{Binding Source={StaticResource Loc}, Path=[Blue]}" Foreground="#000000"/>
                 </ComboBox>
             </StackPanel>
 

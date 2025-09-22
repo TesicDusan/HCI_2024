@@ -24,7 +24,7 @@ The app allows users to browse movie showings, book tickets, manage orders, view
 
 - ⚙️ **User Options**
   - Change **language** (English / Serbian)
-  - Change **theme** (Light / Dark)
+  - Change **theme** (Light / Dark / Blue)
   - Change **PIN (password)** through a secure dialog
   - Preferences are stored per user in the database
 

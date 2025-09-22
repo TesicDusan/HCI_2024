@@ -5,6 +5,7 @@ using HCI_2024.Views.Dialogs;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,7 +89,7 @@ namespace HCI_2024.ViewModels
                 new AddUserDialog(),
                 "RootDialog"
             );
-            if (result is List<string> strings && strings.Count == 2)
+            if (result is ObservableCollection<string> strings && strings.Count == 2)
             {
                 DatabaseHelper.AddUser(strings[0], strings[1]);
                 HomeWindowViewModel.Instance.MessageQueue.Enqueue(Localizer.Instance["Success"]);
@@ -122,9 +123,9 @@ namespace HCI_2024.ViewModels
                 new TextInputDialog(Localizer.Instance["MakeAdmin"]),
                 "RootDialog"
             );
-            if (result is int userId)
+            if (result is string userId && DatabaseHelper.UserExists(userId))
             {
-                DatabaseHelper.MakeAdmin(userId.ToString());
+                DatabaseHelper.MakeAdmin(userId);
                 HomeWindowViewModel.Instance.MessageQueue.Enqueue(Localizer.Instance["Success"]);
             }
             else
